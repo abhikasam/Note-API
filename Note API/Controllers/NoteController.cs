@@ -24,7 +24,10 @@ namespace Note_API.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return Ok(storeContext.Notes.Find(id));
+            var note = storeContext.Notes.Find(id);
+            if(note!=null)
+                return Ok(note);
+            return Ok(new Note());
         }
 
         [HttpPost]
@@ -48,7 +51,7 @@ namespace Note_API.Controllers
             return Ok(note);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
             var note = storeContext.Notes.Find(id);

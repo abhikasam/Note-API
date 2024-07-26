@@ -1,0 +1,32 @@
+﻿@page
+@model NoteApplication.Pages.Notes.DeleteModel
+@{
+}
+
+
+<form method="post">
+    <div class="row">
+        <div class="col-2">
+            Note Id :
+        </div>
+        <div class="col-10">
+            @Model.Note.NoteId
+            <input type="hidden" asp-for="Note.NoteId" value="@Model.Note.NoteId" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            Content :
+        </div>
+        <div class="col-10">
+            @Model.Note.Content
+            <input type="hidden" asp-for="Note.Content" value="@Model.Note.Content" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a href="/Notes" class="btn btn-secondary">Cancel</a>
+        </div>
+    </div>
+</form>

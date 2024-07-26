@@ -16,6 +16,7 @@ namespace Note_API.Models.Store
         {
         }
 
+        public virtual DbSet<Auser> Ausers { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -28,6 +29,22 @@ namespace Note_API.Models.Store
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Auser>(entity =>
+            {
+                entity.HasKey(e => e.UserId)
+                    .HasName("PK__auser__CB9A1CFF08BACE57");
+
+                entity.ToTable("auser");
+
+                entity.Property(e => e.UserId).HasColumnName("userId");
+
+                entity.Property(e => e.Username)
+                    .IsRequired()
+                    .HasMaxLength(100)
+                    .IsUnicode(false)
+                    .HasColumnName("username");
+            });
+
             modelBuilder.Entity<Note>(entity =>
             {
                 entity.ToTable("Note");
