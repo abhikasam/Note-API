@@ -1,0 +1,2 @@
+﻿Store:
+Scaffold-DbContext Name=StoreDbConnectionString -Provider Microsoft.EntityFrameworkCore.SqlServer -Force -OutputDir Models/Store 
